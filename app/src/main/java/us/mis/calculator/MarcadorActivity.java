@@ -3,6 +3,7 @@ package us.mis.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +20,9 @@ public class MarcadorActivity extends AppCompatActivity {
         intentos = findViewById(R.id.textViewIntentos);
         nota = findViewById(R.id.textViewNotaFinal);
         btnRetry = findViewById(R.id.buttonRetry);
+
+        MediaPlayer sound = MediaPlayer.create(MarcadorActivity.this, R.raw.endgame);
+        sound.start();
 
         intentos.setText(intentos.getText().toString() + getIntent().getStringExtra("aciertos"));
         nota.setText(nota.getText().toString() + getIntent().getStringExtra("nota"));

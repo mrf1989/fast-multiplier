@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
@@ -63,10 +64,14 @@ public class MainActivity extends AppCompatActivity {
                 if ((charSequence.length() == resLength) && !textViewOperacion.getText().equals("Multiplication")) {
                     int result = Integer.valueOf(charSequence.toString());
                     if (result == res) {
+                        MediaPlayer sound = MediaPlayer.create(MainActivity.this, R.raw.acierto);
+                        sound.start();
                         textViewAciertos.setText("Hits: " + String.valueOf(++aciertos));
                         generaOperacion();
                         textViewResultado.setText("");
                     } else {
+                        MediaPlayer sound = MediaPlayer.create(MainActivity.this, R.raw.fallo);
+                        sound.start();
                         textViewResultado.setText("");
                         textViewFallos.setText("Failures: " + String.valueOf(++fallos));
                     }
